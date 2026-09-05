@@ -1,0 +1,1 @@
+let b=78;function charge(){b=b>=95?72:b+5;document.querySelector('#fill').style.width=b+'%';document.querySelector('#bat').textContent=b+'%';document.querySelector('#bp').textContent=b+'%'}setInterval(()=>{document.querySelector('#gen').textContent=(4.7+Math.random()*.25).toFixed(2)+' MW';document.querySelector('#demand').textContent=(6.2+Math.random()*.3).toFixed(2)+' MW'},3000)

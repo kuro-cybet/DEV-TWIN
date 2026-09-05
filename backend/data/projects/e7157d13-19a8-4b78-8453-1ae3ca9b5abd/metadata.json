@@ -1,0 +1,7 @@
+{
+  "name": "KrishiMitra",
+  "description": "AI-powered farming companion for Indian farmers with multilingual voice assistant, crop disease scanner, soil health advisor, calendar, weather, and mandi market prices.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

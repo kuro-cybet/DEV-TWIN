@@ -1,0 +1,40 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://devtwin:devtwin@db:5432/devtwin
+      CORS_ORIGINS: http://localhost:5173,http://localhost:3000,http://127.0.0.1:5173
+      PORT: "8000"
+      HOST: "0.0.0.0"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      db:
+        condition: service_started
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:8000/api/v1
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: devtwin
+      POSTGRES_USER: devtwin
+      POSTGRES_PASSWORD: devtwin
+    ports:
+      - "5432:5432"
+    volumes:
+      - devtwin_pg:/var/lib/postgresql/data
+
+volumes:
+  devtwin_pg:
